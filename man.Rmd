@@ -391,8 +391,10 @@ Once you've re-derived what the function does, you'll be able to write a better 
 
 The `@details` are just any additional details or explanation that you think your function needs.
 Most functions don't need details, but some functions need a lot.
-If you have a lot of information to convey, it's a good idea to use informative markdown headings to break the details up into manageable sections[^man-9].
-Here's an example from `dplyr::mutate()`. We've elided some of the details to keep this example short, but you should still get a sense of how we used headings to break up the content in to skimmable chunks:
+If you have a lot of information to convey, it's a good idea to use informative markdown headings 
+to break the details up into manageable sections[^man-9].
+Here's an example from `dplyr::mutate()`. We've elided some of the details to keep this example short, 
+but you should still get a sense of how we used headings to break up the content in to skimmable chunks:
 
 [^man-9]: In older code, you might see the use of `@section title:` which was used to create sections before roxygen2 had full markdown support.
     If you've used these in the past, you can now turn them into markdown headings.
@@ -420,8 +422,14 @@ Here's an example from `dplyr::mutate()`. We've elided some of the details to ke
 #' ...
 ```
 
-This is a good time to remind ourselves that, even though a heading like `Useful mutate functions` in the example above comes immediately after the description in the roxygen block, the content appears much later in the rendered documentation.
+This is a good time to remind ourselves that, even though a heading like `Useful mutate functions` in the example above 
+comes immediately after the description in the roxygen block, the content appears much later in the rendered documentation.
 The details (whether they use section headings or not) appear after the function usage, arguments, and return value.
+Also, notice that the `roxygen` comments do not specify the `@details` tag explicitly. As mentioned above,
+any untagged paragraph after the first one is converted into `@details`, and this convention is used in 
+the `mutate` example. Thus you only need to specify `@details` explicitly when your `@details` documentation section
+is placed after other documentation tags. E.g., if your preferred convention is to specify `@param` right after the title,
+then the `@details` section has to be explicitly declared later.
 
 ## Arguments
 
